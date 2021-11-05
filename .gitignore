@@ -24,3 +24,4 @@ pnpm-debug.log*
 
 # Storybook
 storybook-static
+build-storybook.log
