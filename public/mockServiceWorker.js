@@ -246,7 +246,6 @@ This exception has been gracefully handled as a 500 response, however, it's stro
 }
 
 self.addEventListener('fetch', function (event) {
-  // @ts-ignore
   const { request } = event
   const accept = request.headers.get('accept') || ''
 
@@ -275,7 +274,6 @@ self.addEventListener('fetch', function (event) {
 
   const requestId = uuidv4()
 
-  // @ts-ignore
   return event.respondWith(
     handleRequest(event, requestId).catch(error => {
       if (error.name === 'NetworkError') {

@@ -99,6 +99,20 @@
     // "skipDefaultLibCheck": true,                      /* Skip type checking .d.ts files that are included with TypeScript. */
     "skipLibCheck": true /* Skip type checking all .d.ts files. */
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "tests/**/*.ts", "tests/**/*.tsx"],
-  "exclude": ["node_modules"]
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "tests/**/*.ts",
+    "tests/**/*.tsx",
+    "types/*.d.ts",
+    "mock/*.ts",
+    ".storybook/*.ts",
+    "vue.config.ts",
+    "src/stories/Button.stories.js",
+    "src/stories/Page.stories.js",
+    "src/stories/Header.stories.js",
+    "src/stories/FetchTest.stories.js"
+  ],
+  "exclude": ["node_modules", "dist", "**/*.js"]
 }

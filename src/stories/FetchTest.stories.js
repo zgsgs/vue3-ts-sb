@@ -1,5 +1,5 @@
-import { rest } from 'msw'
 import MyFetchTest from '../components/FetchTest.vue'
+import { rest } from 'msw'
 
 export default {
   title: 'Components/FetchTest',
