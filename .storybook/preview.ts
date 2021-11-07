@@ -1,7 +1,8 @@
-import { addDecorator } from '@storybook/vue3'
 // @ts-ignore
 import { initialize, mswDecorator } from 'msw-storybook-addon'
+
 import { MINIMAL_VIEWPORTS } from '@storybook/addon-viewport'
+import { addDecorator } from '@storybook/vue3'
 
 initialize()
 addDecorator(mswDecorator)
@@ -62,28 +63,31 @@ export const globalTypes = {
 }
 // 装饰器 执行逻辑
 export const decorators = [
-  // (story, context) => {
-  //   // 主题
-  //   const darkModeColor = {
-  //     default: 'auto',
-  //     dark: '#333333',
-  //   }
-  //   return {
-  //     component: { story },
-  //     template: `<story class="${context.globals.darkMode}" style="background-color: ${darkModeColor[context.globals.darkMode]}"/>`,
-  //   }
-  // },
-  // (story, context) => {
-  //   // 国际化
-  //   return {
-  //     component: { story },
-  //     template: `<story class="${context.globals.locale}" />`,
-  //   }
-  // },
+  (story, context) => {
+    // 主题
+    const darkModeColor = {
+      default: 'auto',
+      dark: '#333333',
+    }
+    return {
+      component: { story },
+      template: `<story class="${context.globals.darkMode}" style="background-color: ${darkModeColor[context.globals.darkMode]}"/>`,
+    }
+  },
+  (story, context) => {
+    // 国际化
+    return {
+      component: { story },
+      template: `<story class="${context.globals.locale}" />`,
+    }
+  },
 ]
 // 参数
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
+  options: {
+    storySort: (a, b) => (a[1].kind === b[1].kind ? 0 : a[1].id.localeCompare(b[1].id, undefined, { numeric: true })),
+  },
   controls: {
     matchers: {
       color: /(background|color)$/i,

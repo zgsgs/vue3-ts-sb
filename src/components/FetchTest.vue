@@ -1,5 +1,6 @@
 
 <template>
+  <button @click="fetchData">Fetch Data</button>
   <div v-for="i in state.films" :key="i">
     <p>{{ i }}</p>
   </div>
@@ -9,17 +10,21 @@ import { reactive, onMounted } from 'vue'
 const state = reactive({
   films: []
 })
+const fetchData = async () => {
+  let [err, rsp] = await fetch('https://swapi.dev/api/films/').then(rsp => {
+    if (!rsp.ok) {
+      return Promise.reject([rsp.statusText, undefined])
+    }
+    return rsp.json()
+  }).then(async json => [undefined, json]).catch((err) => err);
 
-onMounted(async () => {
-  let [err, data] = await fetch('https://swapi.dev/api/films/').then(rsp => [undefined, rsp.json()]).catch((err) => [err, undefined]);
-  console.log(err, await data)
+  console.log(err, rsp)
   if (err) {
     alert(err.toString())
     return
   }
-  // 这里有点奇怪，另一个项目中不用await就能获取？？？
-  const rsp = await data
-  state.films = rsp?.results || []
-  console.log(state)
-})
+  state.films = rsp.results || []
+}
+
+onMounted(fetchData)
 </script>
