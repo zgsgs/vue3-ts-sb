@@ -2,6 +2,7 @@
   "name": "vue3-ts-sb",
   "version": "0.1.0",
   "private": true,
+  "description": "A Vue3+TS2+Webpack5+Storybook6.3+jest project",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",

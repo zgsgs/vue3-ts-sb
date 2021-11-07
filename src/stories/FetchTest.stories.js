@@ -1,17 +1,17 @@
-import MyFetchTest from '../components/FetchTest.vue'
+import FetchTest from '../components/FetchTest.vue'
 import { rest } from 'msw'
 
 export default {
   title: 'Components/FetchTest',
-  component: MyFetchTest,
+  component: FetchTest,
 }
 
 const Template = args => ({
-  components: { MyFetchTest },
+  components: { FetchTest },
   setup() {
     return { ...args }
   },
-  template: '<MyFetchTest />',
+  template: '<FetchTest />',
 })
 
 export const SuccessBehavior = Template.bind({})

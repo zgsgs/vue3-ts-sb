@@ -1,3 +1,5 @@
+import '../src/assets/index.css'
+
 // @ts-ignore
 import { initialize, mswDecorator } from 'msw-storybook-addon'
 
